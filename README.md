@@ -6,10 +6,10 @@
 ```bash
 # clone our repo
 # --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
+git clone https://github.com/aanirudhraj/Angular2-SignaturePad-Webpack.git
 
 # change directory to our repo
-cd angular2-webpack-starter
+cd Angular2-SignaturePad-Webpack
 
 # install the repo with npm
 npm install
