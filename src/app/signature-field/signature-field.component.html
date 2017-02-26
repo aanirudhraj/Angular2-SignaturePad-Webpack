@@ -1,4 +1,4 @@
-<div>  [hidden]="submitted">
+<div  [hidden]="submitted">
 <div class="container">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -64,6 +64,7 @@
         Form Values Diagnosis:&nbsp;{{diagnostic}}
      </div>   
 </div>
+
 <div [hidden]="!submitted">
   <h2>Thanks for submitting your details.</h2>
   <div class="row">
@@ -86,3 +87,4 @@
   <button class="btn btn-danger" (click)="submitted=false">Edit</button>
   <hr>
 </div>
+ 

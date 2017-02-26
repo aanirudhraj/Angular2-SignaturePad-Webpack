@@ -2,8 +2,12 @@ import { Component, ViewChild, forwardRef }        from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { SignaturePad }                            from 'angular2-signaturepad/signature-pad';
 import { Student } from './Student';
+import { DetailsComponent } from 'app/app.details.component';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+  
 
+
+import { Routes, RouterModule,Router } from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 
 @Component({
@@ -17,16 +21,19 @@ import {Observable} from 'rxjs/Rx';
       useExisting: forwardRef(() => SignatureFieldComponent),
       multi: true,
     },
-  ],
+       
+  ]
 })
+
+
 export class SignatureFieldComponent implements ControlValueAccessor {
   @ViewChild(SignaturePad) public signaturePad: SignaturePad;
 
-  constructor (private http: Http) {}
+  constructor (private http: Http, private router:Router) {}
  
   model = new Student('', '', '','');
   submitted = false;
-
+  
   public options: Object = {};
 
   public _signature: any = null;
@@ -82,6 +89,9 @@ export class SignatureFieldComponent implements ControlValueAccessor {
        error => console.log(error),
        ()=>console.log("Post finished");
 
+       
+  
+
   }
   active = true;
   newStudent() {
@@ -99,7 +109,7 @@ postNew (body: Object): Observable<Student[]> {
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
-
+          this.router.navigate(['details/']); 
 
         return this.http.post(this.commentsUrl, body, options) // ...using post request
                          .map((res:Response) => res.json().do(console.log("resp:"+ res))) // ...and calling .json() on the response to return data
